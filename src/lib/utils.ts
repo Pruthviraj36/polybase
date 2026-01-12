@@ -20,11 +20,11 @@ export type PolyProps = {
 
 const effectMap: Record<PolyEffect, string> = {
     // Surfaces
-    glass: "bg-white/10 backdrop-blur-md border border-white/20 shadow-xl",
-    floating: "shadow-2xl hover:-translate-y-1 transition-transform duration-300",
-    neon: "shadow-[0_0_20px_hsl(var(--primary)/0.5)] border-primary/50",
+    glass: "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl hover:bg-white/10 transition-colors duration-300",
+    floating: "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(var(--primary),0.3)] transition-all duration-500 will-change-transform",
+    neon: "shadow-[0_0_20px_rgba(var(--primary),0.4),0_0_60px_rgba(var(--primary),0.2)] border-primary/50",
     bordered: "border-2 border-border",
-    gradient: "bg-gradient-to-br from-primary/20 via-background to-secondary/20",
+    gradient: "bg-gradient-to-br from-primary via-purple-500 to-secondary text-white",
     frosted: "bg-background/40 backdrop-blur-2xl",
     tilt: "hover:[transform:perspective(1000px)_rotateX(5deg)_rotateY(5deg)] transition-transform duration-500",
     masked: "[mask-image:linear-gradient(to_bottom,black,transparent)]",
@@ -39,9 +39,9 @@ const effectMap: Record<PolyEffect, string> = {
 
     // Actions
     bounce: "active:scale-95 transition-transform",
-    glow: "hover:shadow-[0_0_30px_hsl(var(--primary)/0.6)] transition-shadow",
+    glow: "hover:shadow-[0_0_40px_-10px_rgba(var(--primary),0.6)] hover:border-primary/50 transition-all duration-300",
     pulse: "animate-pulse-glow",
-    shine: "relative overflow-hidden after:content-[''] after:absolute after:top-0 after:-left-full after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:animate-shine",
+    shine: "relative overflow-hidden after:absolute after:inset-0 after:-translate-x-full after:animate-shine after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent",
     haptic: "active:scale-98 active:brightness-90 transition-all",
     ring: "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
     liquid: "hover:rounded-[30%_70%_70%_30%/30%_30%_70%_70%] transition-all duration-500",
@@ -52,14 +52,14 @@ const effectMap: Record<PolyEffect, string> = {
     glitch: "hover:animate-glitch", // Placeholder for actual glitch
     magnetic: "cursor-none", // Hooked in via JS
     confetti: "overflow-visible", // Triggered via event
-    primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+    primary: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(var(--primary),0.3)]",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+    outline: "border-2 border-input bg-transparent hover:bg-accent hover:text-accent-foreground hover:border-accent",
 
     // Typography
     italic: "italic",
     bold: "font-bold",
-    gradientText: "bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary",
+    gradientText: "bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/60",
     shadowText: "drop-shadow-sm",
     textShadow: "drop-shadow-sm",
     readable: "leading-relaxed tracking-wide antialiased",
@@ -91,17 +91,17 @@ const effectMap: Record<PolyEffect, string> = {
     bleed: "-mx-4 sm:-mx-6 lg:-mx-8",
 
     // State
-    faded: "opacity-50",
+    faded: "opacity-60", // More readable than 50
     hidden: "hidden",
-    skeleton: "animate-pulse bg-muted rounded",
-    error: "border-destructive text-destructive bg-destructive/10",
-    success: "border-green-500 text-green-500 bg-green-500/10",
+    skeleton: "animate-pulse bg-white/10 rounded", // Dark mode friendly
+    error: "border-destructive text-destructive bg-destructive/10 shadow-[0_0_20px_rgba(239,68,68,0.2)]",
+    success: "border-green-500 text-green-500 bg-green-500/10 shadow-[0_0_20px_rgba(34,197,94,0.2)]",
     warning: "border-orange-500 text-orange-500 bg-orange-500/10",
     info: "border-blue-500 text-blue-500 bg-blue-500/10",
-    loading: "cursor-wait opacity-70 pointer-events-none",
+    loading: "cursor-wait opacity-70",
     busy: "cursor-progress",
-    disabled: "opacity-50 cursor-not-allowed pointer-events-none",
-    vibrant: "saturate-200 contrast-125",
+    disabled: "opacity-50 cursor-not-allowed pointer-events-none grayscale",
+    vibrant: "saturate-[1.5] contrast-[1.1]",
 
     // Animation
     slideIn: "animate-in slide-in-from-bottom-4 duration-500",

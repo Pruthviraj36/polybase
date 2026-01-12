@@ -301,7 +301,7 @@ export default function App() {
               </div>
             )}
             playgroundCode={`<GlowCursor size={600} opacity={0.2} />`}
-            defaultProps={{ size: 400, opacity: 0.15 }}
+            defaultProps={{ size: 400, opacity: 0.15 } as any}
             propsList={COMPONENT_DATA.glowcursor.props}
           />
         );

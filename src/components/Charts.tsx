@@ -50,10 +50,12 @@ export function AreaChart({ data, height = 300, className, ...poly }: ChartProps
                     />
                     <ReTooltip
                         contentStyle={{
-                            backgroundColor: "hsl(var(--card))",
-                            border: "1px solid hsl(var(--border))",
-                            borderRadius: "var(--radius)",
-                            boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)"
+                            backgroundColor: "rgba(10, 10, 15, 0.8)",
+                            backdropFilter: "blur(12px)",
+                            border: "1px solid rgba(255, 255, 255, 0.1)",
+                            borderRadius: "16px",
+                            boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.5)",
+                            color: "#fff"
                         }}
                     />
                     <Area
@@ -95,9 +97,11 @@ export function BarChart({ data, height = 300, className, ...poly }: ChartProps)
                     <ReTooltip
                         cursor={{ fill: "hsl(var(--muted))", opacity: 0.1 }}
                         contentStyle={{
-                            backgroundColor: "hsl(var(--card))",
-                            border: "1px solid hsl(var(--border))",
-                            borderRadius: "var(--radius)"
+                            backgroundColor: "rgba(10, 10, 15, 0.8)",
+                            backdropFilter: "blur(12px)",
+                            border: "1px solid rgba(255, 255, 255, 0.1)",
+                            borderRadius: "16px",
+                            color: "#fff"
                         }}
                     />
                     <Bar

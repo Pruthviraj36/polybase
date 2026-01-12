@@ -48,7 +48,7 @@ export function GlowCursor({
                 opacity,
             }}
             className={cn(
-                "pointer-events-none fixed top-0 left-0 z-0 rounded-full",
+                "pointer-events-none fixed top-0 left-0 z-50 rounded-full mix-blend-screen",
                 className
             )}
         />
