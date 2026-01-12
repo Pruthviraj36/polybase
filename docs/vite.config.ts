@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename)
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
+    dedupe: ['react', 'react-dom'],
     alias: {
       'polybase': path.resolve(__dirname, '../src/index.ts'),
       '@': path.resolve(__dirname, './src'),
