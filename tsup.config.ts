@@ -9,4 +9,7 @@ export default defineConfig({
     external: ["react", "react-dom", "framer-motion", "lucide-react", "recharts", "zod"],
     injectStyle: true,
     sourcemap: true,
+    banner: {
+        js: '"use client";',
+    },
 });

@@ -22,7 +22,7 @@ const effectMap: Record<PolyEffect, string> = {
     // Surfaces
     glass: "bg-white/10 backdrop-blur-md border border-white/20 shadow-xl",
     floating: "shadow-2xl hover:-translate-y-1 transition-transform duration-300",
-    neon: "shadow-[0_0_20px_rgba(var(--primary),0.5)] border-primary/50",
+    neon: "shadow-[0_0_20px_hsl(var(--primary)/0.5)] border-primary/50",
     bordered: "border-2 border-border",
     gradient: "bg-gradient-to-br from-primary/20 via-background to-secondary/20",
     frosted: "bg-background/40 backdrop-blur-2xl",
@@ -39,7 +39,7 @@ const effectMap: Record<PolyEffect, string> = {
 
     // Actions
     bounce: "active:scale-95 transition-transform",
-    glow: "hover:shadow-[0_0_30px_rgba(var(--primary),0.6)] transition-shadow",
+    glow: "hover:shadow-[0_0_30px_hsl(var(--primary)/0.6)] transition-shadow",
     pulse: "animate-pulse-glow",
     shine: "relative overflow-hidden after:content-[''] after:absolute after:top-0 after:-left-full after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:animate-shine",
     haptic: "active:scale-98 active:brightness-90 transition-all",
