@@ -63,37 +63,70 @@ import "polybase/dist/index.css";
 ### Basic Components
 
 ```tsx
-import { Card, Button, Heading, Text } from "polybase";
+import { 
+  Card, 
+  Button, 
+  Heading, 
+  Text, 
+  Modal, 
+  Accordion, 
+  Tooltip, 
+  AreaChart, 
+  Input, 
+  PolyForm 
+} from "polybase";
 
 function App() {
   return (
-    <Card glass floating padded neon className="max-w-md mx-auto mt-20">
-      <Heading level={1} gradient-text uppercase>
-        Polybase UI
-      </Heading>
-      <Text faded readable italic>
-        The professional way to build UIs with zero effort.
-      </Text>
-      <Button bounce glow shine primary className="mt-4">
-        Get Started
-      </Button>
-    </Card>
+    <div className="p-20 space-y-12">
+      <Card glass floating padded neon className="max-w-md mx-auto">
+        <Heading level={1} gradient-text uppercase>
+          Polybase UI
+        </Heading>
+        <Text faded readable italic>
+          The professional way to build UIs with zero effort.
+        </Text>
+        <Button bounce glow shine primary className="mt-4">
+          Get Started
+        </Button>
+      </Card>
+
+      {/* Advanced Components */}
+      <Modal>
+        <ModalTrigger asChild>
+          <Button outline>Open Modal</Button>
+        </ModalTrigger>
+        <ModalContent glass>
+          <ModalTitle>Advanced Interaction</ModalTitle>
+          <Text sm>This modal inherit's Polybase's glassmorphism engine.</Text>
+        </ModalContent>
+      </Modal>
+
+      <AreaChart data={chartData} gradient />
+    </div>
   );
 }
 ```
 
+## Available Components
+
+- **Foundational**: Button, Card, Typography (Heading, Text), Layout (Flex, Grid)
+- **Interactive**: Accordion, Modal, Tooltip, ThemeToggle
+- **Data & Forms**: Input, Switch, Checkbox, PolyForm, MultiStepForm, AreaChart, BarChart
+- **Utilities**: GlowCursor
+
 ## The Poly-Engine Props
 
-You can use any of these props on `Card`, `Button`, `Text`, `Heading`, and more:
+You can use any of these props on almost every component to instantly apply premium styles:
 
 ### Surfaces
-`glass`, `floating`, `neon`, `bordered`, `gradient`, `frosted`, `tilt`, `masked`, `embossed`, `debossed`, `textured`, `acrylic`, `mica`, `metallic`
+`glass`, `floating`, `neon`, `bordered`, `gradient`, `frosted`, `tilt`, `masked`, `embossed`, `debossed`, `textured`, `acrylic`, `mica`, `metallic`, `spotlight`, `maskPattern`
 
 ### Actions
-`bounce`, `glow`, `pulse`, `shine`, `haptic`, `ring`, `liquid`, `ripple`, `reverb`, `expand`, `compress`, `glitch`, `magnetic`, `confetti`
+`bounce`, `glow`, `pulse`, `shine`, `haptic`, `ring`, `liquid`, `ripple`, `reverb`, `expand`, `compress`, `glitch`, `magnetic`, `confetti`, `primary`, `secondary`, `outline`
 
 ### Typography
-`italic`, `bold`, `gradient-text`, `shadow-text`, `readable`, `mono`, `serif`, `uppercase`, `lowercase`, `tracked`, `tight`, `clamped`, `typewriter`
+`italic`, `bold`, `gradient-text`, `shadow-text`, `readable`, `mono`, `serif`, `uppercase`, `lowercase`, `tracked`, `tight`, `clamped`, `typewriter`, `sm`, `xs`, `lg`, `xl`
 
 ### Layout
 `centered`, `padded`, `spaced`, `isolated`, `sticky`, `snap`, `fluid`, `constrained`, `aspect`, `hero`, `full`, `bleed`
@@ -104,3 +137,4 @@ You can use any of these props on `Card`, `Button`, `Text`, `Heading`, and more:
 
 ### Backgrounds
 `dotted`, `striped`, `checkered`, `noise`, `mesh`, `aurora`
+

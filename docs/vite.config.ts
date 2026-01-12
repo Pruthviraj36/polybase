@@ -13,7 +13,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
     alias: {
-      'polybase': path.resolve(__dirname, '../src/index.ts'),
+      'polybase': path.resolve(__dirname, '../dist/index.js'),
       '@': path.resolve(__dirname, './src'),
       'react': path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
