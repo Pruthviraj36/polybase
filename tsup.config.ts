@@ -7,7 +7,7 @@ export default defineConfig({
     clean: true,
     minify: true,
     external: ["react", "react-dom", "framer-motion", "lucide-react", "recharts", "zod"],
-    injectStyle: true,
+    injectStyle: false,
     sourcemap: true,
     banner: {
         js: '"use client";',
