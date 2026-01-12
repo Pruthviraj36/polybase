@@ -14,11 +14,11 @@ export function IntroductionPage() {
                 </Text>
                 <Flex gap={4} className="mt-8">
                     <Button primary glow shine bounce expand>Get Started</Button>
-                    <Button outline variant="ghost">View GitHub</Button>
+                    <Button outline>View GitHub</Button>
                 </Flex>
             </div>
 
-            <Grid cols={1} mdCols={3} gap={8}>
+            <Grid cols={3} gap={8}>
                 <Card glass padded floating>
                     <Heading level={3} className="mb-4">Boolean First</Heading>
                     <Text faded>
@@ -42,13 +42,13 @@ export function IntroductionPage() {
             <section className="space-y-8 bg-primary/5 p-12 rounded-3xl border border-primary/20 neon">
                 <Heading level={2}>The Poly-Engine Philosophy</Heading>
                 <div className="prose prose-invert max-w-none">
-                    <Text size="lg">
+                    <Text lg>
                         Polybase is built on a "Resolution Engine" that translates human-readable intent into complex styling and motion logic.
                         When you add a prop like <code>glass</code>, the engine doesn't just add a background; it coordinates backdrop-blur,
                         opacity, borders, and shadows to ensure a professional result across all components.
                     </Text>
                 </div>
-            </section> section
+            </section>
         </div>
     );
 }

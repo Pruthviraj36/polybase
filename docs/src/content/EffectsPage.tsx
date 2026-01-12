@@ -14,7 +14,7 @@ export function EffectsPage() {
             {Object.entries(POLY_EFFECTS).map(([category, effects]) => (
                 <div key={category} className="space-y-6">
                     <Heading level={2}>{category}</Heading>
-                    <Grid cols={2} mdCols={3} lgCols={4} gap={6}>
+                    <Grid cols={3} gap={6}>
                         {effects.map((effect) => {
                             const polyProps = { [effect]: true };
                             return (
@@ -25,7 +25,7 @@ export function EffectsPage() {
                                     {...polyProps}
                                     className="group relative overflow-hidden transition-all duration-500 hover:scale-105"
                                 >
-                                    <Flex direction="column" align="center" justify="center" className="h-24">
+                                    <Flex direction="col" align="center" justify="center" className="h-24">
                                         <Text bold sm uppercase tracking-widest>{effect}</Text>
                                         <Text xs italic faded className="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                             Prop: {effect}

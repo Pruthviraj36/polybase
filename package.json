@@ -25,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polybase/polybase-ui.git"
+    "url": "git+https://github.com/Pruthviraj36/polybase.git"
   },
   "bugs": {
-    "url": "https://github.com/polybase/polybase-ui/issues"
+    "url": "https://github.com/Pruthviraj36/polybase.git/issues"
   },
-  "homepage": "https://github.com/polybase/polybase-ui#readme",
+  "homepage": "https://github.com/Pruthviraj36/polybase.git#readme",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

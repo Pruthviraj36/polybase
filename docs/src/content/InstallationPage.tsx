@@ -47,7 +47,7 @@ export default {
             </section>
 
             <Card glass padded neon className="bg-primary/5">
-                <Flex direction="column" gap={4}>
+                <Flex direction="col" gap={4}>
                     <Heading level={3}>Framework Guides</Heading>
                     <Text faded>Check out our specific guides for the following frameworks:</Text>
                     <Flex gap={4}>
