@@ -10,9 +10,9 @@ interface ComponentPageProps {
     component: React.ElementType; // Relaxed type for broad compatibility
     playgroundCode: string;
     availableEffects?: string[];
-    defaultProps?: Record<string, any>;
+    defaultProps?: Record<string, boolean>;
     propsList: { name: string; type: string; description: string; default?: string }[];
-    props?: any; // Allow spreading COMPONENT_DATA items which include a 'props' array
+    props?: unknown; // Allow spreading COMPONENT_DATA items which include a 'props' array
 }
 
 
