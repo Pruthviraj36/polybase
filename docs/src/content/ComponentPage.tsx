@@ -1,16 +1,18 @@
 "use client";
 
+import * as React from "react";
 import { Heading, Text } from "polybase";
 import { Playground } from "../components/Playground";
 
 interface ComponentPageProps {
     title: string;
     description: string;
-    component: React.ComponentType<any>;
+    component: React.ElementType; // Relaxed type for broad compatibility
     playgroundCode: string;
     availableEffects?: string[];
     defaultProps?: Record<string, any>;
     propsList: { name: string; type: string; description: string; default?: string }[];
+    props?: any; // Allow spreading COMPONENT_DATA items which include a 'props' array
 }
 
 

@@ -126,7 +126,7 @@ const effectKeys = Object.keys(effectMap) as PolyEffect[];
 
 export function splitPolyProps<T extends PolyProps>(props: T) {
     const polyProps: PolyProps = {};
-    const restProps: any = {};
+    const restProps: Record<string, unknown> = {};
 
     Object.entries(props).forEach(([key, value]) => {
         if (effectKeys.includes(key as PolyEffect)) {

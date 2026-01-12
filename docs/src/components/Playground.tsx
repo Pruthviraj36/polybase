@@ -9,7 +9,7 @@ import { cn } from "polybase";
 interface PlaygroundProps {
     title: string;
     description: string;
-    component: React.ComponentType<any>;
+    component: React.ElementType;
     defaultProps?: Record<string, boolean>;
     availableEffects?: string[];
     baseCode: string;
@@ -24,7 +24,7 @@ export function Playground({
     availableEffects = ["glass", "neon", "floating", "shine", "bounce", "glow"],
     baseCode
 }: PlaygroundProps) {
-    const [props, setProps] = React.useState<Record<string, boolean>>(defaultProps);
+    const [props, setProps] = React.useState<Record<string, boolean>>(defaultProps || {});
     const [copied, setCopied] = React.useState(false);
     const [view, setView] = React.useState<"preview" | "code">("preview");
 
@@ -37,7 +37,7 @@ export function Playground({
 
     const generateCode = () => {
         const activeProps = Object.entries(props)
-            .filter(([_, active]) => active)
+            .filter(([, active]) => active)
             .map(([name]) => name)
             .join(" ");
 

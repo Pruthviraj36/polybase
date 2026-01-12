@@ -7,7 +7,6 @@ import {
   Button,
   Card,
   Text,
-  Flex,
   Heading,
   Modal,
   ModalTrigger,
@@ -40,6 +39,7 @@ import { InstallationPage } from "./content/InstallationPage";
 import { EffectsPage } from "./content/EffectsPage";
 import { ComponentPage } from "./content/ComponentPage";
 import { ShowcasePage } from "./content/ShowcasePage";
+import { Github, Star, Menu } from "lucide-react";
 
 const SECTIONS = [
   {
@@ -84,6 +84,7 @@ const SECTIONS = [
 
 export default function App() {
   const [activeTab, setActiveTab] = React.useState("showcase");
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -120,7 +121,7 @@ export default function App() {
             {...COMPONENT_DATA.typography}
             component={Heading}
             playgroundCode={`<Heading level={1} ...props>\n  Hello Polybase\n</Heading>`}
-            defaultProps={{ "gradient-text": true, typewriter: true }}
+            defaultProps={{ gradientText: true, typewriter: true }}
             propsList={COMPONENT_DATA.typography.props}
           />
         );
@@ -129,7 +130,7 @@ export default function App() {
         return (
           <ComponentPage
             {...COMPONENT_DATA.modal}
-            component={({ glass, neon }: any) => (
+            component={({ glass, neon }: { glass: boolean; neon: boolean }) => (
               <Modal>
                 <ModalTrigger asChild>
                   <Button primary glow shine expand>Trigger Modal</Button>
@@ -158,7 +159,7 @@ export default function App() {
         return (
           <ComponentPage
             {...COMPONENT_DATA.accordion}
-            component={({ primary, neon, glow }: any) => (
+            component={({ primary, neon, glow }: { primary: boolean; neon: boolean; glow: boolean }) => (
               <Accordion type="single" collapsible className="w-full max-w-xl">
                 <AccordionItem value="item-1">
                   <AccordionTrigger primary={primary} neon={neon} glow={glow}>The Poly-Engine</AccordionTrigger>
@@ -184,7 +185,7 @@ export default function App() {
         return (
           <ComponentPage
             {...COMPONENT_DATA.tooltip}
-            component={({ glass, neon }: any) => (
+            component={({ glass, neon }: { glass: boolean; neon: boolean }) => (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button primary shine>Hover for poly-info</Button>
@@ -201,7 +202,7 @@ export default function App() {
           />
         );
 
-      case "charts":
+      case "charts": {
         const chartData = [
           { name: "Jan", value: 400 },
           { name: "Feb", value: 300 },
@@ -213,7 +214,7 @@ export default function App() {
         return (
           <ComponentPage
             {...COMPONENT_DATA.charts}
-            component={({ gradient }: any) => (
+            component={({ gradient }: { gradient: boolean }) => (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                 <Card glass padded className="space-y-4">
                   <Text bold>Area Analytics</Text>
@@ -230,12 +231,13 @@ export default function App() {
             propsList={COMPONENT_DATA.charts.props}
           />
         );
+      }
 
       case "forms":
         return (
           <ComponentPage
             {...COMPONENT_DATA.forms}
-            component={({ glass, error, success }: any) => (
+            component={({ glass, error, success }: { glass: boolean; error: boolean; success: boolean }) => (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl">
                 <div className="space-y-6">
                   <div className="space-y-2">
@@ -259,7 +261,7 @@ export default function App() {
           />
         );
 
-      case "polyform":
+      case "polyform": {
         const loginSchema = z.object({
           email: z.string().email(),
           password: z.string().min(8)
@@ -285,13 +287,14 @@ export default function App() {
             propsList={COMPONENT_DATA.polyform.props}
           />
         );
+      }
 
       case "glowcursor":
 
         return (
           <ComponentPage
             {...COMPONENT_DATA.glowcursor}
-            component={({ size, opacity }: any) => (
+            component={({ size, opacity }: { size: number; opacity: number }) => (
               <div className="h-64 flex items-center justify-center border-2 border-dashed border-border/30 rounded-xl relative overflow-hidden">
                 <GlowCursor size={size} opacity={opacity} className="absolute" />
                 <Text faded>Move mouse here to test local glow effect</Text>
@@ -312,46 +315,96 @@ export default function App() {
   return (
     <TooltipProvider>
       <GlowCursor />
-      <div className="flex min-h-screen bg-background text-foreground selection:bg-primary/30">
-        <Sidebar
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          sections={SECTIONS}
-        />
+      <div className="flex min-h-screen bg-background text-foreground font-sans">
+        {/* Desktop Sidebar */}
+        <div className="hidden lg:block">
+          <Sidebar
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            sections={SECTIONS}
+          />
+        </div>
 
-        <main className="flex-1 min-w-0 flex flex-col">
-          {/* Sticky Header */}
-          <header className="sticky top-0 z-40 w-full border-b border-border/20 bg-background/60 backdrop-blur-xl">
-            <div className="container flex h-16 max-w-[1200px] mx-auto items-center justify-between px-8">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-muted-foreground/60 tracking-wider">docs / <span className="text-foreground font-semibold">{activeTab}</span></span>
-              </div>
-              <div className="flex items-center gap-4">
-                <a href="https://github.com/Pruthviraj36/polybase" target="_blank" className="p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                  <Github className="w-5 h-5" />
+        <main className="flex-1 min-w-0 flex flex-col relative">
+           {/* Mobile Header */}
+           <div className="lg:hidden h-16 border-b border-border/20 flex items-center justify-between px-6 bg-background/80 backdrop-blur-xl sticky top-0 z-50">
+             <div className="flex items-center gap-3">
+               <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
+                 <span className="font-bold text-primary">P</span>
+               </div>
+               <span className="font-bold">Polybase</span>
+             </div>
+             <Button glass className="w-9 h-9 p-0 flex items-center justify-center text-muted-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                <Menu className="w-5 h-5" />
+             </Button>
+           </div>
+           
+           {mobileMenuOpen && (
+             <div className="lg:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-20 px-6 overflow-y-auto">
+               <Sidebar
+                 activeTab={activeTab}
+                 onTabChange={(t) => { setActiveTab(t); setMobileMenuOpen(false); }}
+                 sections={SECTIONS}
+                 mobile
+               />
+             </div>
+           )}
+
+          {/* Consistent Top Bar for Desktop */}
+          <header className="hidden lg:flex sticky top-0 z-40 w-full border-b border-white/5 bg-background/40 backdrop-blur-xl h-16 items-center justify-between px-8 transition-all duration-300">
+             <div className="flex items-center gap-2 text-sm">
+                <span className="text-muted-foreground">docs</span>
+                <span className="text-muted-foreground">/</span>
+                <span className="font-medium text-foreground tracking-wide capitalize">{activeTab}</span>
+             </div>
+             <div className="flex items-center gap-3">
+                <a href="https://github.com/Pruthviraj36/polybase" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors p-2">
+                   <Github className="w-5 h-5" />
                 </a>
-                <Button xs primary glow shine className="h-8">Star on GitHub</Button>
-              </div>
-            </div>
+                <Button sm primary glow shine className="h-9 gap-2">
+                   <Star className="w-3.5 h-3.5 fill-current" />
+                   Star on GitHub
+                </Button>
+             </div>
           </header>
 
-          <div className="max-w-[1200px] w-full mx-auto p-8 md:p-16 space-y-24 flex-1">
-            <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="w-full max-w-[1400px] mx-auto p-6 md:p-12 lg:p-16 space-y-24 flex-1">
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
               {renderContent()}
             </div>
 
-            <footer className="border-t border-border/20 pt-12 pb-24 flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground text-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center border border-primary/30">
-                  <span className="text-[10px] font-bold text-primary">P</span>
-                </div>
-                <Text>© 2026 Polybase UI Lab. All rights reserved.</Text>
+            <footer className="border-t border-border/20 pt-16 pb-24">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                 <div className="col-span-1 md:col-span-2 space-y-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-primary font-bold text-xs border border-primary/30">P</div>
+                      <span className="font-bold tracking-tight text-lg">Polybase</span>
+                    </div>
+                    <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+                      A high-performance design system focused on micro-interactions and premium glassmorphism effects.
+                    </p>
+                 </div>
+                 <div className="space-y-4">
+                    <h4 className="font-bold text-sm">Resources</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                       <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
+                       <li><a href="#" className="hover:text-primary transition-colors">Components</a></li>
+                       <li><a href="#" className="hover:text-primary transition-colors">Examples</a></li>
+                    </ul>
+                 </div>
+                 <div className="space-y-4">
+                    <h4 className="font-bold text-sm">Community</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                       <li><a href="#" className="hover:text-primary transition-colors">GitHub</a></li>
+                       <li><a href="#" className="hover:text-primary transition-colors">Discord</a></li>
+                       <li><a href="#" className="hover:text-primary transition-colors">Twitter</a></li>
+                    </ul>
+                 </div>
               </div>
-              <Flex gap={8}>
-                <a href="#" className="hover:text-primary transition-colors hover:underline underline-offset-4">Documentation</a>
-                <a href="https://github.com/Pruthviraj36/polybase" className="hover:text-primary transition-colors hover:underline underline-offset-4">GitHub</a>
-                <a href="#" className="hover:text-primary transition-colors hover:underline underline-offset-4">Discord</a>
-              </Flex>
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground/60">
+                 <p>© 2026 Polybase UI Lab. Apache 2.0 License.</p>
+                 <p>Built with React & Tailwind CSS.</p>
+              </div>
             </footer>
           </div>
         </main>
@@ -359,6 +412,3 @@ export default function App() {
     </TooltipProvider>
   );
 }
-
-import { Github } from "lucide-react";
-

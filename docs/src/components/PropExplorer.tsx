@@ -4,8 +4,8 @@ import { Check, Info } from "lucide-react";
 import { cn, Text } from "polybase";
 
 interface PropExplorerProps {
-    currentProps: Record<string, boolean>;
-    onChange: (props: Record<string, boolean>) => void;
+    currentProps: Record<string, any>;
+    onChange: (props: Record<string, any>) => void;
     availableEffects: string[];
 }
 

@@ -8,7 +8,7 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 declare function cn(...inputs: ClassValue[]): string;
-type PolyEffect = "glass" | "floating" | "neon" | "bordered" | "gradient" | "frosted" | "tilt" | "masked" | "embossed" | "debossed" | "textured" | "acrylic" | "mica" | "metallic" | "spotlight" | "maskPattern" | "bounce" | "glow" | "pulse" | "shine" | "haptic" | "ring" | "liquid" | "ripple" | "reverb" | "expand" | "compress" | "glitch" | "magnetic" | "confetti" | "primary" | "secondary" | "outline" | "italic" | "bold" | "gradient-text" | "shadow-text" | "textShadow" | "readable" | "mono" | "serif" | "uppercase" | "lowercase" | "tracked" | "tight" | "clamped" | "typewriter" | "sm" | "xs" | "lg" | "xl" | "centered" | "padded" | "spaced" | "isolated" | "sticky" | "snap" | "fluid" | "constrained" | "aspect" | "hero" | "full" | "bleed" | "faded" | "hidden" | "skeleton" | "error" | "success" | "warning" | "info" | "loading" | "busy" | "disabled" | "vibrant" | "slide-in" | "fade-in" | "zoom-in" | "rotate-in" | "reveal" | "stagger" | "loop" | "float-anim" | "dotted" | "striped" | "checkered" | "noise" | "mesh" | "aurora";
+type PolyEffect = "glass" | "floating" | "neon" | "bordered" | "gradient" | "frosted" | "tilt" | "masked" | "embossed" | "debossed" | "textured" | "acrylic" | "mica" | "metallic" | "spotlight" | "maskPattern" | "bounce" | "glow" | "pulse" | "shine" | "haptic" | "ring" | "liquid" | "ripple" | "reverb" | "expand" | "compress" | "glitch" | "magnetic" | "confetti" | "primary" | "secondary" | "outline" | "italic" | "bold" | "gradientText" | "shadowText" | "textShadow" | "readable" | "mono" | "serif" | "uppercase" | "lowercase" | "tracked" | "tight" | "clamped" | "typewriter" | "sm" | "xs" | "lg" | "xl" | "centered" | "padded" | "spaced" | "isolated" | "sticky" | "snap" | "fluid" | "constrained" | "aspect" | "hero" | "full" | "bleed" | "faded" | "hidden" | "skeleton" | "error" | "success" | "warning" | "info" | "loading" | "busy" | "disabled" | "vibrant" | "slideIn" | "fadeIn" | "zoomIn" | "rotateIn" | "reveal" | "stagger" | "loop" | "floatAnim" | "dotted" | "striped" | "checkered" | "noise" | "mesh" | "aurora";
 type PolyProps = {
     [K in PolyEffect]?: boolean;
 };
@@ -46,6 +46,10 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement>, PolyProps {
 declare const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttributes<HTMLDivElement>>;
 interface GridProps extends React.HTMLAttributes<HTMLDivElement>, PolyProps {
     cols?: 1 | 2 | 3 | 4 | 5 | 6 | 12;
+    smCols?: 1 | 2 | 3 | 4 | 5 | 6 | 12;
+    mdCols?: 1 | 2 | 3 | 4 | 5 | 6 | 12;
+    lgCols?: 1 | 2 | 3 | 4 | 5 | 6 | 12;
+    xlCols?: 1 | 2 | 3 | 4 | 5 | 6 | 12;
     gap?: number;
 }
 declare const Grid: React.ForwardRefExoticComponent<GridProps & React.RefAttributes<HTMLDivElement>>;

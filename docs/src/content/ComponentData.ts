@@ -16,7 +16,7 @@ export const COMPONENT_DATA = {
         description: "Professional text and heading components with gradient, motion, and semantic support.",
         props: [
             { name: "level", description: "Heading level (1-6). Default is 1.", type: "1 | 2 | 3 | 4 | 5 | 6" },
-            { name: "gradient-text", type: "boolean", description: "Applies a primary-to-secondary gradient." },
+            { name: "gradientText", type: "boolean", description: "Applies a primary-to-secondary gradient." },
             { name: "typewriter", type: "boolean", description: "Adds a typing animation effect." },
             { name: "bold", type: "boolean", description: "Applies font-bold." },
             { name: "italic", type: "boolean", description: "Applies italic style." },
